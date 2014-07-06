@@ -1,4 +1,4 @@
-# Ractive.js ractive-decorators-selectize decorator plugin
+# Ractive.js selectize decorator plugin
 
 *Find more Ractive.js plugins at [ractivejs.org/plugins](http://ractivejs.org/plugins)*
 
