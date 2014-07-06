@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang='en-GB'>
+<head>
+	<meta charset='utf-8'>
+	<title>Ractive.js Selectize decorator plugin</title>
+
+	<!-- CSS -->
+	<link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+	<link rel='stylesheet' href='demo/main.css'>
+
+	<link rel="stylesheet" href="vendor/selectize/dist/css/selectize.css">
+	<style type='text/css'>
+
+	</style>
+</head>
+
+<body>
+
+	<!-- <a class='forkme' href='https://github.com/you/repo'>Fork me on GitHub</a> -->
+
+	<header>
+		<h1>Ractive.js Selectize decorator plugin</h1>
+		<p class='strap'>
+			<span class='download'>download: <a href='[TODO]'>ractive-decorators-selectize.js</a></span>
+			<span class='more-plugins'>more plugins at <a href='http://ractivejs.org/plugins'>ractivejs.org/plugins</a></span>
+		</p>
+	</header>
+
+	<main>
+		<p>This plugin is a decorator for <a href="http://brianreavis.github.io/selectize.js/">Selectize.js</a> inspired by <a href="https://github.com/sandermarechal">@sandermarechal</a>'s <a href="http://prezent.github.io/ractive-decorators-select2/">Select2</a> plugin.</p>
+       	<p>To customize selectize, set your options object to <code>Ractive.decorators.selectize.types.default</code>. You can also set up multiple configurations by adding another options object into <code>Ractive.decorators.selectize.types</code> as a new property.</p>
+
+		<div id='demo' class='clearfix'></div>
+
+		<pre id='demo-template-view' class='prettyprint lang-html'></pre>
+		<pre id='demo-code-view' class='prettyprint lang-js'></pre>
+	</main>
+
+	<footer>
+		<p>Copyright &copy; 2014 Hidenao Miyamoto. Licensed MIT</p>
+	</footer>
+
+	<!-- Demo template -->
+	<script id='demo-template' type='text/ractive'>
+        <select decorator='selectize' value='{{singleSelect}}'>
+            {{#options}}
+                <option value='{{.}}'>{{.}}</option>
+            {{/options}}
+        </select>
+        <p><button on-click='reset-single'>Reset (two-way binding)</button></p>
+        <p>Selected option: {{singleSelect}}</p>
+
+        <select decorator='selectize:max3' value='{{multiSelect}}' multiple>
+            {{#options}}
+                <option value='{{.}}'>{{.}}</option>
+            {{/options}}
+        </select>
+        <p><button on-click='reset-multi'>Reset (two-way binding)</button></p>
+        <p>Selected options: {{multiSelect}}</p>
+	</script>
+
+	<!-- Dependencies -->
+	<script src='vendor/jquery/jquery.js'></script>
+	<script src="vendor/selectize/dist/js/standalone/selectize.js"></script>
+	<script src='vendor/ractive/ractive-legacy.js'></script>
+	<script src='src/ractive-decorators-selectize.js'></script>
+
+	<!-- Demo code -->
+	<script id='demo-code'>
+		Ractive.decorators.selectize.types = {
+			default: {
+				hideSelected: true
+			},
+			max3: {
+				maxItems: 3,
+				plugins: ['remove_button']
+			}
+		};
+
+		ractive = new Ractive({
+			el: 'demo',
+			template: '#demo-template',
+            data: {
+                singleSelect: 'one',
+                multiSelect: [],
+                options: [ 'one', 'two', 'three', 'four', 'five', 'six' ]
+            }
+		});
+
+		ractive.on({
+			'reset-single': function (event) {
+				ractive.set('singleSelect', 'one');
+			},
+			'reset-multi': function (event) {
+				ractive.set('multiSelect', []);
+			}
+		});
+	</script>
+
+	<!-- Insert code into the page -->
+	<script src='demo/prettify.js'></script>
+	<script src='demo/demo.js'></script>
+</body>
+</html>
