@@ -3,12 +3,6 @@
 	"version": "0.1.0",
 	"author": "Hidenao Miyamoto",
 	"main": "ractive-decorators-selectize.js",
-	"dependencies": {
-		"ractive": "~0.4.0"
-	},
-	"devDependencies": {
-		"selectize": "~0.10.1"
-	},
 	"ignore": [
 		".*",
 		"*.json",
@@ -18,7 +12,6 @@
 		"src",
 		"test",
 		"Gruntfile.js",
-		"index.html",
-		"README.md"
+		"index.html"
 	]
 }

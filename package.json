@@ -7,7 +7,7 @@
 	"main": "ractive-decorators-selectize.js",
 	"description": "ractive-decorators-selectize plugin for Ractive.js",
 	"dependencies": {
-		"ractive": "~0.4.0"
+		"ractive": "*"
 	},
 	"devDependencies": {
 		"grunt": "~0.4.5",
