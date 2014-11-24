@@ -34,14 +34,14 @@
 
 	'use strict';
 
-	// AMD environment
-	if ( typeof define === 'function' && define.amd ) {
-		define([ 'ractive' ], factory );
+	// Common JS (i.e. node/browserify)
+	if ( typeof module !== 'undefined' && module.exports && typeof require === 'function' ) {
+		factory( require( 'ractive' ), require( 'jquery' ) );
 	}
 
-	// Common JS (i.e. node/browserify)
-	else if ( typeof module !== 'undefined' && module.exports && typeof require === 'function' ) {
-		factory( require( 'ractive' ) );
+	// AMD environment
+	else if ( typeof define === 'function' && define.amd ) {
+		define([ 'ractive', 'jquery' ], factory );
 	}
 
 	// browser global
