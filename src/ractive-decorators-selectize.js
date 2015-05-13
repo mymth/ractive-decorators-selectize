@@ -5,7 +5,7 @@
 
 	Version <%= pkg.version %>.
 
-	This plugin is a decorator for Selectize.js inspired by @sandermarechal's Select2 plugin.
+	This plugin is a decorator for Selectize.js.
 
 	==========================
 
@@ -25,8 +25,6 @@
 	    // requiring the plugin will 'activate' it - no need to use
 	    // the return value
 	    require( 'ractive-decorators-selectize' );
-
-	<< more specific instructions for this plugin go here... >>
 
 */
 
@@ -64,6 +62,9 @@
 			types = selectizeDecorator.types,
 			setting = false;
 
+		if (typeof keypath == 'object') {
+			keypath = keypath.str;
+		}
 		if (!types.hasOwnProperty('default')) {
 			types.default = {};
 		}

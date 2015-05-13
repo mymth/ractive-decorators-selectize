@@ -2,7 +2,7 @@
 
 *Find more Ractive.js plugins at [ractivejs.org/plugins](http://ractivejs.org/plugins)*
 
-[See the demo here.](TODO)
+[See the demo here.](index.html)
 
 ## Usage
 
