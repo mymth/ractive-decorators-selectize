@@ -4,6 +4,7 @@
   "author": {
     "name": "Hidenao Miyamoto"
   },
+  "license": "MIT",
   "main": "ractive-decorators-selectize.js",
   "description": "ractive-decorators-selectize plugin for Ractive.js",
   "dependencies": {},
@@ -17,6 +18,10 @@
     "rollup-plugin-uglify": "^1.0.2",
     "rollup-watch": "^3.2.2",
     "uglify-js-harmony": "^2.7.5"
+  },
+  "repository" : {
+    "type": "git",
+    "url": "https://mymth@bitbucket.org/mymth/ractive-decorators-selectize.git"
   },
   "scripts": {
     "build": "rollup -c",
