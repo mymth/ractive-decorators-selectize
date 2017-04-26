@@ -1,83 +1,95 @@
 # Ractive.js selectize decorator plugin
 
-*Find more Ractive.js plugins at [ractivejs.org/plugins](http://ractivejs.org/plugins)*
+*Find more Ractive.js plugins at [docs.ractivejs.org/latest/plugins](http://docs.ractivejs.org/latest/plugins)*
 
 [See the demo here.](index.html)
 
 ## Usage
 
-Include this file on your page below Ractive, e.g:
+Load the decorator.
 
 ```html
-<script src='lib/ractive.js'></script>
-<script src='lib/ractive-decorators-selectize.js'></script>
+<!-- on Browser (exposed to global with 'selectizeDecorator' signature) -->
+<script src="lib/ractive.js"></script>
+<script src="lib/ractive-decorators-selectize.js"></script>
+```
+```js
+// on Node.js
+var Ractive = require( 'ractive' );
+var selectizeDecorator = require( 'ractive-decorators-selectize' );
 ```
 
-Or, if you're using a module loader, require this module:
+Make the decorator available.
 
 ```js
-// requiring the plugin will 'activate' it - no need to use the return value
-require( 'ractive-decorators-selectize' );
+// to all Ractive instances
+Ractive.decorators.selectize = selectizeDecorator;
+
+// to a single instance
+var ractive = new Ractive({
+    el: '#container',
+    template: template,
+    decorators: {
+        selectize: selectizeDecorator,
+    },
+});
+
+// to all instaces of RactiveSelectize
+var RactiveSelectize = Ractive.extend({
+    decorators: {
+        selectize: selectizeDecorator,
+    },
+})
 ```
 
-Then, add `decorator` attribute to the select tag in your template.
+Set the `as-selectize` attribute to the select tag you want to use it.
 
 ```html
-<select decorator='selectize' value='{{selected}}'>
+<select as-selectize value="{{selected}}">
     {{#options}}
-        <option value='{{.}}'>{{.}}</option>
+        <option value="{{.}}">{{.}}</option>
     {{/options}}
 </select>
 ```
 
-### Customization
+### Using types
 
-#### Changing the default options
+#### Customizing the default type
 
-Set your options object to `Ractive.decorators.selectize.types.default`.
+You can set your initialize options for Selectize to `selectizeDecorator.types.default`.
 
 ```js
-Ractive.decorators.selectize.types.default = {
-	hideSelected: true
+selectizeDecorator.types.default = {
+    hideSelected: true
 };
 ```
 
-#### Adding another option set
+#### Adding types
 
-Add an options object into `Ractive.decorators.selectize.types` as a new property.
+You can also use multiple types of Selectize elements.
+To use additional types, first, add new types to `selectizeDecorator.types` with their initialize options.
 
 ```js
-Ractive.decorators.selectize.types.max3 = {
-	maxItems: 3,
-	plugins: ['remove_button']
+selectizeDecorator.types.max3 = {
+    maxItems: 3,
+    plugins: ['remove_button']
+};
+selectizeDecorator.types.answer = {
+    paceholder: 'Choose your answer',
 };
 ```
 
-Then use the property name as the modifier of `decorator` attribute.
+Then set the type name to the `as-selectize` attribute.
+> Note: type name *must be quoted* so that the decorator can take it as a literal.
 
 ```html
-<select decorator='selectize:max3' value='{{selected}}' multiple>
+<select as-selectize="'max3'" value="{{selected}}" multiple>
     {{#options}}
-        <option value='{{.}}'>{{.}}</option>
+        <option value="{{.}}">{{.}}</option>
     {{/options}}
 </select>
-```
-
-#### Using a function
-
-Function that returns an options object can also be used. The DOM node which Selectize is applied to is passed as the argument.
-
-```js
-Ractive.decorators.selectize.types.max3 = function (node) {
-	return {
-		maxItems: 3,
-		plugins: ['remove_button']
-	};
-};
 ```
 
 ## License
 
 Copyright (c) 2014 Hidenao Miyamoto. Licensed MIT
-
-Created with the [Ractive.js plugin template](https://github.com/ractivejs/plugin-template) for Grunt.
