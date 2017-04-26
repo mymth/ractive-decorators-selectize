@@ -3,9 +3,22 @@ import multidest from 'rollup-plugin-multidest';
 import uglify from 'rollup-plugin-uglify';
 import { minify } from 'uglify-js-harmony';
 
+let banner = `/*
+  ractive-decorators-selectize
+  ===============================================
+
+  Version <%= pkg.version %>.
+
+  This plugin is a decorator for Selectize.js.
+
+  ==========================
+*/
+`.replace('<%= pkg.version %>', process.env.npm_package_version);
+
 export default {
   entry: './src/ractive-decorators-selectize.js',
   moduleName: 'selectizeDecorator',
+  banner,
   format: 'umd',
   plugins: [
     babel({
