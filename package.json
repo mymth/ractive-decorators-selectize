@@ -19,7 +19,7 @@
     "rollup-watch": "^3.2.2",
     "uglify-js-harmony": "^2.7.5"
   },
-  "repository" : {
+  "repository": {
     "type": "git",
     "url": "https://mymth@bitbucket.org/mymth/ractive-decorators-selectize.git"
   },

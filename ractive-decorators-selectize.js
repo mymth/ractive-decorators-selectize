@@ -10,10 +10,13 @@
 */
 
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global.selectizeDecorator = factory());
-}(this, (function () { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('ractive'), require('jquery')) :
+	typeof define === 'function' && define.amd ? define(['ractive', 'jquery'], factory) :
+	(global.selectizeDecorator = factory(global.Ractive,global.$));
+}(this, (function (Ractive,$) { 'use strict';
+
+Ractive = 'default' in Ractive ? Ractive['default'] : Ractive;
+$ = 'default' in $ ? $['default'] : $;
 
 var selectizeDecorator = function selectizeDecorator(node) {
   var _this = this;
