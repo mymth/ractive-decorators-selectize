@@ -3,8 +3,9 @@ import multidest from 'rollup-plugin-multidest';
 import uglify from 'rollup-plugin-uglify';
 import { minify } from 'uglify-js-harmony';
 
+const pkgName = process.env.npm_package_name;
 let banner = `/*
-  ractive-decorators-selectize
+  ${pkgName}
   ===============================================
 
   Version <%= pkg.version %>.
@@ -16,8 +17,13 @@ let banner = `/*
 `.replace('<%= pkg.version %>', process.env.npm_package_version);
 
 export default {
-  entry: './src/ractive-decorators-selectize.js',
+  entry: `./src/${pkgName}.js`,
   moduleName: 'selectizeDecorator',
+  external: ['ractive', 'jquery'],
+  globals: {
+    ractive: 'Ractive',
+    jquery: '$',
+  },
   banner,
   format: 'umd',
   plugins: [
@@ -28,12 +34,12 @@ export default {
     }),
     multidest([
       {
-        dest: 'ractive-decorators-selectize.min.js',
+        dest: `${pkgName}.min.js`,
         plugins: [
           uglify({}, minify),
         ],
       },
     ]),
   ],
-  dest: 'ractive-decorators-selectize.js',
+  dest: `${pkgName}.js`,
 };

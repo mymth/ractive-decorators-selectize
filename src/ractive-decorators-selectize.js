@@ -1,3 +1,6 @@
+import Ractive from 'ractive';
+import $ from 'jquery';
+
 const selectizeDecorator = function (node, type = 'default') {
   const keypath = Ractive.getNodeInfo(node).getBindingPath();
   const types = selectizeDecorator.types;
