@@ -1,7 +1,7 @@
 const selectizeDecorator = function (node, type = 'default') {
-  const keypath = node._ractive.binding ? node._ractive.binding.model.key : false;
+  const keypath = Ractive.getNodeInfo(node).getBindingPath();
   const types = selectizeDecorator.types;
-  const options = types.hasOwnProperty(type) ? types[type] : types['default'];
+  const options = types.hasOwnProperty(type) ? types[type] : types.default;
   let observer;
   let setting = false;
 

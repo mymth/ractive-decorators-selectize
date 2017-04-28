@@ -2,14 +2,16 @@
 
 *Find more Ractive.js plugins at [docs.ractivejs.org/latest/plugins](http://docs.ractivejs.org/latest/plugins)*
 
+This plugin is a decorator for [Selectize.js](http://brianreavis.github.io/selectize.js/)</a>.
+
 [See the demo here.](index.html)
 
 ## Usage
 
-Load the decorator.
+Load the plugin.
 
 ```html
-<!-- on Browser (exposed to global with 'selectizeDecorator' signature) -->
+<!-- on Browser (plugin is exposed to global with 'selectizeDecorator' signature) -->
 <script src="lib/ractive.js"></script>
 <script src="lib/ractive-decorators-selectize.js"></script>
 ```
@@ -42,7 +44,7 @@ var RactiveSelectize = Ractive.extend({
 })
 ```
 
-Set the `as-selectize` attribute to the select tag you want to use it.
+Set the `as-selectize` attribute to the `select` tag you want to use the decorator.
 
 ```html
 <select as-selectize value="{{selected}}">

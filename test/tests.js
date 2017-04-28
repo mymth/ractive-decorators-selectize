@@ -97,9 +97,6 @@ describe('selectizeDecorator', function () {
     var ractive, selectize;
 
     before(function () {
-      var template = '<select id="selectize-test" as-selectize value="{{foo}}">' +
-        '{{#options}}<option value="{{.}}">{{.}}</option>{{/options}}' +
-        '</select>';
       ractive = new Ractive({
         el: 'test-container',
         template: template,
