@@ -1,8 +1,8 @@
 # Ractive.js selectize decorator plugin
 
-*Find more Ractive.js plugins at [docs.ractivejs.org/latest/plugins](http://docs.ractivejs.org/latest/plugins)*
+*Find more Ractive.js plugins at [ractive.js.org/integrations/plugins/](https://ractive.js.org/integrations/plugins/)*
 
-This plugin is a decorator for [Selectize.js](http://brianreavis.github.io/selectize.js/)</a>.
+This plugin is a decorator for [Selectize.js](http://selectize.github.io/selectize.js/)</a>.
 
 [See the demo here.](index.html)
 
