@@ -2,7 +2,7 @@
   ractive-decorators-selectize
   ===============================================
 
-  Version 0.2.1.
+  Version 0.2.2.
 
   This plugin is a decorator for Selectize.js.
 
@@ -34,7 +34,7 @@ var selectizeDecorator = function selectizeDecorator(node) {
     }
 
     setting = true;
-    _this.updateModel();
+    _this.updateModel(keypath);
     setting = false;
   });
 

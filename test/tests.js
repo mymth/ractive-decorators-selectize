@@ -99,10 +99,11 @@ describe('selectizeDecorator', function () {
     before(function () {
       ractive = new Ractive({
         el: 'test-container',
-        template: template,
+        template: template + '<input id="text-input" type="text" value="{{bar}}" twoway="false">',
         data: function () {
           return {
             foo: 'one',
+            bar: 'xyz',
             options: ['one', 'two', 'three'],
           };
         },
@@ -129,6 +130,14 @@ describe('selectizeDecorator', function () {
 
       ractive.set('foo', 'one');
       expect(selectize.items, 'to equal', ['one']);
+    });
+
+    it('keeps other bindings from unexpected update', function () {
+      ractive.find('#text-input').value = 'zzz';
+
+      selectize.addItem('three');
+      expect(selectize.items, 'to equal', ['three']);
+      expect(ractive.get('bar'), 'to be', 'xyz');
     });
   })
 });

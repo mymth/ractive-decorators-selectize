@@ -2,7 +2,7 @@
 
 *Find more Ractive.js plugins at [ractive.js.org/integrations/plugins/](https://ractive.js.org/integrations/plugins/)*
 
-This plugin is a decorator for [Selectize.js](http://selectize.github.io/selectize.js/)</a>.
+This plugin is a decorator for [Selectize.js](http://selectize.github.io/selectize.js/).
 
 [See the demo here.](index.html)
 

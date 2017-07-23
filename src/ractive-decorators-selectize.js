@@ -13,7 +13,7 @@ const selectizeDecorator = function selectizeDecorator(node, type = 'default') {
     }
 
     setting = true;
-    this.updateModel();
+    this.updateModel(keypath);
     setting = false;
   });
 
