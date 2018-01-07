@@ -2,7 +2,7 @@
   ractive-decorators-selectize
   ===============================================
 
-  Version 0.2.2.
+  Version 0.2.3.
 
   This plugin is a decorator for Selectize.js.
 
@@ -28,17 +28,19 @@ var selectizeDecorator = function selectizeDecorator(node) {
   var obsHandle = void 0;
   var setting = false;
 
-  $(node).selectize(options).on('change', function () {
-    if (setting) {
-      return;
-    }
-
-    setting = true;
-    _this.updateModel(keypath);
-    setting = false;
-  });
+  $(node).selectize(options);
 
   if (keypath) {
+    node.selectize.on('change', function () {
+      if (setting) {
+        return;
+      }
+
+      setting = true;
+      _this.updateModel(keypath);
+      setting = false;
+    });
+
     obsHandle = this.observe(keypath, function (newValue) {
       if (setting) {
         return;

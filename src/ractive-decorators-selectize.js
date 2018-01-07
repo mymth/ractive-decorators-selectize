@@ -7,17 +7,19 @@ const selectizeDecorator = function selectizeDecorator(node, type = 'default') {
   let obsHandle;
   let setting = false;
 
-  $(node).selectize(options).on('change', () => {
-    if (setting) {
-      return;
-    }
-
-    setting = true;
-    this.updateModel(keypath);
-    setting = false;
-  });
+  $(node).selectize(options);
 
   if (keypath) {
+    node.selectize.on('change', () => {
+      if (setting) {
+        return;
+      }
+
+      setting = true;
+      this.updateModel(keypath);
+      setting = false;
+    });
+
     obsHandle = this.observe(keypath, (newValue) => {
       if (setting) {
         return;
