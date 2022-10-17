@@ -1,7 +1,4 @@
-import babel from 'rollup-plugin-babel';
-import multidest from 'rollup-plugin-multidest';
-import uglify from 'rollup-plugin-uglify';
-import { minify } from 'uglify-js-harmony';
+import { terser } from 'rollup-plugin-terser';
 
 const pkgName = process.env.npm_package_name;
 let banner = `/*
@@ -16,30 +13,26 @@ let banner = `/*
 */
 `.replace('<%= pkg.version %>', process.env.npm_package_version);
 
-export default {
-  entry: `./src/${pkgName}.js`,
-  moduleName: 'selectizeDecorator',
-  external: ['ractive', 'jquery'],
+const commonOutputOpts = {
+  name: 'selectizeDecorator',
   globals: {
     ractive: 'Ractive',
     jquery: '$',
   },
-  banner,
   format: 'umd',
-  plugins: [
-    babel({
-      exclude: 'node_modules/**',
-      babelrc: false,
-      presets: ['es2015-rollup'],
-    }),
-    multidest([
-      {
-        dest: `${pkgName}.min.js`,
-        plugins: [
-          uglify({}, minify),
-        ],
-      },
-    ]),
-  ],
-  dest: `${pkgName}.js`,
+  banner,
+};
+
+export default {
+  external: ['ractive', 'jquery'],
+  input: `./src/${pkgName}.js`,
+  output: [
+    {
+      file: `${pkgName}.js`,
+    },
+    {
+      file: `${pkgName}.min.js`,
+      plugins: [terser()],
+    },
+  ].map(opts => Object.assign({}, commonOutputOpts, opts)),
 };
