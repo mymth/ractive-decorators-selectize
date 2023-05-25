@@ -1,24 +1,26 @@
 # Ractive.js selectize decorator plugin
 
-*Find more Ractive.js plugins at [ractive.js.org/integrations/plugins/](https://ractive.js.org/integrations/plugins/)*
+*Find more Ractive.js plugins at [ractive.js.org/resources/#plugins](https://ractive.js.org/resources/#plugins)*
 
-This plugin is a decorator for [Selectize.js](http://selectize.github.io/selectize.js/).
+This plugin is a decorator for [Selectize.js](https://selectize.dev).
 
-[See the demo here.](index.html)
+[See the demo here.](https://raw.githack.com/mymth/ractive-decorators-selectize/v0.4.0/index.html)
 
 ## Usage
 
-Load the plugin.
+Load the plugin. 
+> Selectize and jQuery are expected to be loaded before the plugin.
 
 ```html
-<!-- on Browser (plugin is exposed to global with 'selectizeDecorator' signature) -->
-<script src="lib/ractive.js"></script>
-<script src="lib/ractive-decorators-selectize.js"></script>
+<!-- on Browser: -->
+<!-- • the plugin is exposed to global as 'selectizeDecorator' -->
+<script src="https://cdn.jsdelivr.net/npm/ractive"></script>
+<script src="https://cdn.jsdelivr.net/gh/mymth/ractive-decorators-selectize@0.4.0/dist/ractive-decorators-selectize.js"></script>
 ```
 ```js
-// on Node.js
-var Ractive = require( 'ractive' );
-var selectizeDecorator = require( 'ractive-decorators-selectize' );
+// on Node.js:
+import Ractive from 'ractive';
+import selectizeDecorator from 'ractive-decorators-selectize';
 ```
 
 Make the decorator available.

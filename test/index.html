@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>ractive-decorators-selectize test suite</title>
-    <link rel="stylesheet" href="../node_modules/selectize/dist/css/selectize.css">
+    <link rel="stylesheet" href="../node_modules/%40selectize/selectize/dist/css/selectize.css">
     <link href="https://cdn.jsdelivr.net/npm/mocha/mocha.css" rel="stylesheet">
     <style type="text/css">
         #test {
@@ -22,9 +22,9 @@
     <script src="https://cdn.jsdelivr.net/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/unexpected/unexpected.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mocha/mocha.js"></script>
-    <script src='../node_modules/selectize/dist/js/standalone/selectize.js'></script>
-    <script src='../node_modules/ractive/ractive.js'></script>
-    <script src='../ractive-decorators-selectize.js'></script>
+    <script src="../node_modules/%40selectize/selectize/dist/js/selectize.js"></script>
+    <script src="../node_modules/ractive/ractive.js"></script>
+    <script src="../dist/ractive-decorators-selectize.js"></script>
 
     <script>
       mocha.setup('bdd');
@@ -32,7 +32,7 @@
 
     <!-- load test modules -->
 
-    <script src='tests.js'></script>
+    <script src="tests.js"></script>
     <script>
       mocha.checkLeaks();
       mocha.globals(['jQuery', 'Ractive', 'ractive', 'weknowhow']);

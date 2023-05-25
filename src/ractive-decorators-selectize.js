@@ -1,9 +1,7 @@
-import $ from 'jquery';
-
-const selectizeDecorator = function selectizeDecorator(node, type = 'default') {
+function selectizeDecorator(node, type = 'default') {
   const keypath = this.getContext(node).getBindingPath();
   const types = selectizeDecorator.types;
-  const options = types.hasOwnProperty(type) ? types[type] : types.default;
+  const options = types[type] || types.default;
   let obsHandle;
   let setting = false;
 
