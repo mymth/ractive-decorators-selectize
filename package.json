@@ -6,7 +6,7 @@
   },
   "license": "MIT",
   "type": "module",
-  "exports": "ractive-decorators-selectize.js",
+  "exports": "./ractive-decorators-selectize.js",
   "description": "ractive-decorators-selectize plugin for Ractive.js",
   "dependencies": {
     "@selectize/selectize": "^0.15.2",
