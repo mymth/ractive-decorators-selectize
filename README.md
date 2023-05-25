@@ -4,7 +4,7 @@
 
 This plugin is a decorator for [Selectize.js](https://selectize.dev).
 
-[See the demo here.](https://raw.githack.com/mymth/ractive-decorators-selectize/v0.4.0/index.html)
+[See the demo here.](https://bbcdn.githack.com/mymth/ractive-decorators-selectize/raw/v0.4.0/index.html)
 
 ## Usage
 
