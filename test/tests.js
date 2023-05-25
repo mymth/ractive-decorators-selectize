@@ -1,11 +1,10 @@
 // ractive-decorators-selectize tests
 // ===============================================
-var expect = weknowhow.expect;
 
 describe('selectizeDecorator', function () {
-  var template = '<select id="selectize-test" as-selectize value="{{foo}}">' +
-    '{{#options}}<option value="{{.}}">{{.}}</option>{{/options}}' +
-    '</select>';
+  const template = `<select id="selectize-test" as-selectize value="{{foo}}">
+  {{#options}}<option value="{{.}}">{{.}}</option>{{/options}}
+</select>`;
 
   describe('types', function () {
     it('has an empty "default" type by default', function () {
@@ -15,14 +14,12 @@ describe('selectizeDecorator', function () {
   });
 
   describe('initialize options', function () {
-    var ractive, selectize;
-
     it('uses "default" type to create seletize object onto the node by default', function () {
       selectizeDecorator.types.default.hideSelected = true;
 
-      ractive = new Ractive({
+      const ractive = new Ractive({
         el: 'test-container',
-        template: template,
+        template,
         data: function () {
           return {
             foo: 'one',
@@ -31,7 +28,7 @@ describe('selectizeDecorator', function () {
         },
         decorators: {selectize: selectizeDecorator},
       });
-      selectize = $('#selectize-test').data().selectize;
+      const selectize = $('#selectize-test').data().selectize;
 
       expect(selectize.settings.hideSelected, 'to be true');
 
@@ -44,13 +41,11 @@ describe('selectizeDecorator', function () {
         plugins: ['remove_button']
       };
 
-      var templateM = '<select id="selectize-test" as-selectize="\'max3\'" value="{{foo}}" multiple>' +
-        '{{#options}}<option value="{{.}}">{{.}}</option>{{/options}}' +
-        '</select>';
-
-      ractive = new Ractive({
+      const ractive = new Ractive({
         el: 'test-container',
-        template: templateM,
+        template: `<select id="selectize-test" as-selectize="'max3'" value="{{foo}}" multiple>
+  {{#options}}<option value="{{.}}">{{.}}</option>{{/options}}
+</select>`,
         data: function () {
           return {
             foo: [],
@@ -59,7 +54,7 @@ describe('selectizeDecorator', function () {
         },
         decorators: {selectize: selectizeDecorator},
       });
-      selectize = $('#selectize-test').data().selectize;
+      const selectize = $('#selectize-test').data().selectize;
 
       expect(selectize.settings.maxItems, 'to be', 3);
       expect(selectize.settings.plugins, 'to equal', ['remove_button']);
@@ -70,13 +65,11 @@ describe('selectizeDecorator', function () {
     it('uses "default" if specified type does not exist', function () {
       selectizeDecorator.types = {default: {hideSelected: true}};
 
-      var templateN = '<select id="selectize-test" as-selectize="none" value="{{foo}}">' +
-        '{{#options}}<option value="{{.}}">{{.}}</option>{{/options}}' +
-        '</select>';
-
-      ractive = new Ractive({
+      const ractive = new Ractive({
         el: 'test-container',
-        template: templateN,
+        template: `<select id="selectize-test" as-selectize="none" value="{{foo}}">
+  {{#options}}<option value="{{.}}">{{.}}</option>{{/options}}
+</select>`,
         data: function () {
           return {
             foo: 'one',
@@ -85,7 +78,7 @@ describe('selectizeDecorator', function () {
         },
         decorators: {selectize: selectizeDecorator},
       });
-      selectize = $('#selectize-test').data().selectize;
+      const selectize = $('#selectize-test').data().selectize;
 
       expect(selectize.settings.hideSelected, 'to be true');
 
@@ -94,12 +87,13 @@ describe('selectizeDecorator', function () {
   });
 
   describe('two-way binding', function () {
-    var ractive, selectize;
+    let ractive, selectize;
 
     before(function () {
       ractive = new Ractive({
         el: 'test-container',
-        template: template + '<input id="text-input" type="text" value="{{bar}}" twoway="false">',
+        template: `${template}
+<input id="text-input" type="text" value="{{bar}}" twoway="false">`,
         data: function () {
           return {
             foo: 'one',

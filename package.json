@@ -9,8 +9,8 @@
   "exports": "./ractive-decorators-selectize.js",
   "description": "ractive-decorators-selectize plugin for Ractive.js",
   "dependencies": {
-    "@selectize/selectize": "^0.15.2",
-    "ractive": "^1.4.1"
+    "ractive": "^1.4.1",
+    "selectize": "^0.12.6"
   },
   "devDependencies": {
     "@rollup/plugin-replace": "^5.0.2",
